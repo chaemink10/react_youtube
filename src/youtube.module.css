@@ -1,0 +1,95 @@
+div,
+p {
+  margin: 0;
+  padding: 0;
+}
+.searchbox {
+  width: 100%;
+  background-color: #000;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+.logo {
+  color: red;
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+}
+.title {
+  color: #fff;
+  font-weight: bold;
+  margin-left: 0.2rem;
+  font-size: 1rem;
+}
+.searchform {
+  display: flex;
+  flex-wrap: nowrap;
+  flex: 1 0 auto;
+}
+.inputbox {
+  margin-left: 1rem;
+  height: 1.7rem;
+  border-radius: 0.1rem;
+  border: none;
+  flex: 1 0 auto;
+}
+.searchbtn {
+  width: 2rem;
+  height: 1.9rem;
+  background-color: #444;
+  border: none;
+  border-radius: 0.1rem;
+  color: #fff;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/* snippet */
+.search_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 5px;
+}
+.snippet_box {
+  display: flex;
+  flex: 0 1 49.5%;
+  box-sizing: border-box;
+  border: 1px solid #f1f1f1;
+  box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.05);
+  align-items: center;
+  margin-bottom: 5px;
+  background: #fff;
+  padding: 15px 10px;
+}
+.snippet_box:hover {
+  transform: scale(1.05);
+  transition-timing-function: ease;
+  transition-duration: 0.5s;
+}
+.snippet_imgbox {
+  width: 10rem;
+  height: 5rem;
+}
+.snippet_img {
+  width: 100%;
+}
+.snippet_desc {
+  margin-left: 10px;
+  text-align: left;
+  color: #555;
+}
+.snippet_tit {
+  font-size: 1rem;
+}
+.snippet_subtit {
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
