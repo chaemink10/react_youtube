@@ -43,16 +43,16 @@ const App = () => {
   }, []);
 
   //snnipet 클릭
-  const onDetailClick = useCallback((id) => {
+  const onDetailClick = useCallback((snippetInfo) => {
     setListData();
-    setIframeData(id);
+    setIframeData(snippetInfo);
   }, []);
 
   return (
     <>
       <SearchBar searchHandle={onSearch} />
       {listData && <SearchList result={listData} detailClick={onDetailClick} />}
-      {iframeData && <VideoPage iframeID={iframeData} />}
+      {iframeData && <VideoPage iframeInfo={iframeData} />}
     </>
   );
 };

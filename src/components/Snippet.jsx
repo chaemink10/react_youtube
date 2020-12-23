@@ -7,8 +7,7 @@ const Snippet = (props) => {
 
   const onHandleClick = (event) => {
     event.preventDefault();
-    const urlId = inputEl.current.dataset.id;
-    props.detailClick(urlId);
+    props.detailClick(inputEl.current.dataset);
   };
 
   return (
@@ -17,6 +16,7 @@ const Snippet = (props) => {
       onClick={onHandleClick}
       ref={inputEl}
       data-id={id}
+      data-descript={snippet.title}
     >
       <div className={styles.snippet_imgbox}>
         <img

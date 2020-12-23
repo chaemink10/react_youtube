@@ -1,20 +1,20 @@
 import React from 'react';
 
 const VideoPage = (props) => {
-  const { iframeID } = props;
-  const url = 'https://www.youtube.com/embed/' + iframeID;
+  const { id, descript } = props.iframeInfo;
+  const url = 'https://www.youtube.com/embed/' + id;
 
   return (
     <div>
       <iframe
-        id={iframeID}
+        id={id}
         type='text/html'
         width='720'
         height='405'
         src={url}
         frameBorder='0'
         allowFullScreen
-        title={iframeID}
+        title={descript}
       ></iframe>
     </div>
   );
