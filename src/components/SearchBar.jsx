@@ -9,6 +9,7 @@ const SearchBar = (props) => {
     event.preventDefault();
     const inputText = inputRef.current.value;
     console.log(inputText);
+    props.search(inputText);
   };
 
   return (

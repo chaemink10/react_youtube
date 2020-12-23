@@ -3,11 +3,16 @@ import Snippet from './Snippet';
 import styles from '../youtube.module.css';
 
 const SearchList = (props) => {
-  console.log(props);
+  const { result } = props;
+
   return (
-    <div className={styles.search_list}>
-      <Snippet />
-    </div>
+    <>
+      {console.log(result)}
+      <div className={styles.search_list}>
+        {result &&
+          result.map((value) => <Snippet key={value.etag} result={value} />)}
+      </div>
+    </>
   );
 };
 
