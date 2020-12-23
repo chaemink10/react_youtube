@@ -5,12 +5,17 @@ import styles from '../youtube.module.css';
 const SearchList = (props) => {
   const { result } = props;
 
+  const onDetail = (id) => {
+    props.detailClick(id);
+  };
+
   return (
     <>
-      {console.log(result)}
       <div className={styles.search_list}>
         {result &&
-          result.map((value) => <Snippet key={value.etag} result={value} />)}
+          result.map((value) => (
+            <Snippet key={value.etag} result={value} detailClick={onDetail} />
+          ))}
       </div>
     </>
   );

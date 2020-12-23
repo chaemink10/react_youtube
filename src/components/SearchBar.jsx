@@ -8,8 +8,7 @@ const SearchBar = (props) => {
   const onSubmit = (event) => {
     event.preventDefault();
     const inputText = inputRef.current.value;
-    console.log(inputText);
-    props.search(inputText);
+    props.searchHandle(inputText);
   };
 
   return (

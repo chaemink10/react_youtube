@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import './app.css';
 import SearchBar from './components/SearchBar';
 import SearchList from './components/SearchList';
+import VideoPage from './components/VideoPage';
 
 const requestOptions = {
   method: 'GET',
@@ -10,6 +11,7 @@ const requestOptions = {
 
 const App = () => {
   const [listData, setListData] = useState();
+  const [iframeData, setIframeData] = useState();
 
   useEffect(() => {
     fetch(
@@ -23,22 +25,34 @@ const App = () => {
       .catch((error) => console.log('error', error));
   }, []);
 
+  //조회
   const onSearch = useCallback((inputText) => {
     fetch(
       `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${inputText}&key=AIzaSyCf_F1G4pIAXG2Al_-uOTFXfMhbS3iD9Sw`,
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => setListData(result.items))
+      .then((result) => {
+        result.items.map((value) => {
+          return (value.id = value.id.videoId);
+        });
+        setListData(result.items);
+        setIframeData();
+      })
       .catch((error) => console.log('error', error));
+  }, []);
+
+  //snnipet 클릭
+  const onDetailClick = useCallback((id) => {
+    setListData();
+    setIframeData(id);
   }, []);
 
   return (
     <>
-      <SearchBar search={onSearch} />
-      <SearchList result={listData} />
-      {/* 리스트 - 카드형식*/}
-      {/* 리스트상세 - 동영상, 상세, 오른쪽카드목록*/}
+      <SearchBar searchHandle={onSearch} />
+      {listData && <SearchList result={listData} detailClick={onDetailClick} />}
+      {iframeData && <VideoPage iframeID={iframeData} />}
     </>
   );
 };
