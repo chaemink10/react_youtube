@@ -2,12 +2,13 @@ import React, { useRef } from 'react';
 import styles from '../youtube.module.css';
 
 const Snippet = (props) => {
-  const { snippet, id } = props.result;
+  const { snippet } = props.result;
   const inputEl = useRef(null);
 
+  //Click
   const onHandleClick = (event) => {
     event.preventDefault();
-    props.detailClick(inputEl.current.dataset);
+    props.handleDetail(props.result);
   };
 
   return (
@@ -15,8 +16,6 @@ const Snippet = (props) => {
       className={styles.snippet_box}
       onClick={onHandleClick}
       ref={inputEl}
-      data-id={id}
-      data-descript={snippet.title}
     >
       <div className={styles.snippet_imgbox}>
         <img
