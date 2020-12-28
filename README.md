@@ -1,7 +1,7 @@
 # React Practice : YouTube
 
 This project is React Practice Project.
-[Create React App](https://github.com/).
+[This project Domain Link](https://chaemink10.github.io/react_youtube/).
 
 ## Component
 
