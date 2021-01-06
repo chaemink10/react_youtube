@@ -2,22 +2,20 @@ import React from 'react';
 import Snippet from './Snippet';
 import styles from '../youtube.module.css';
 
-const SearchList = (props) => {
-  const { result } = props;
-
-  const onDetail = (snippetInfo) => {
-    props.handleDetail(snippetInfo);
-  };
-
+const SearchList = ({ result, handleDetail, display }) => {
+  console.log(display);
   return (
-    <>
-      <div className={styles.search_list}>
-        {result &&
-          result.map((value) => (
-            <Snippet key={value.etag} result={value} handleDetail={onDetail} />
-          ))}
-      </div>
-    </>
+    <div className={styles.search_list}>
+      {result &&
+        result.map((value) => (
+          <Snippet
+            key={value.etag}
+            result={value}
+            handleDetail={handleDetail}
+            display={display}
+          />
+        ))}
+    </div>
   );
 };
 

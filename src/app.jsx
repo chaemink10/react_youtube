@@ -46,7 +46,6 @@ const App = () => {
   //snnipet 클릭
   const onDetailClick = useCallback((snippetInfo) => {
     setIframeData(snippetInfo);
-    setListData();
   }, []);
 
   //home화면으로 이동
@@ -66,10 +65,22 @@ const App = () => {
   return (
     <div className={styles.wrap}>
       <SearchBar handleSearch={onSearch} handleGoHome={onHome} />
-      {listData && (
-        <SearchList result={listData} handleDetail={onDetailClick} />
-      )}
-      {iframeData && <VideoPage iframeInfo={iframeData} />}
+      <section className={styles.detail}>
+        {iframeData && (
+          <div className={styles.video}>
+            <VideoPage iframeInfo={iframeData} />
+          </div>
+        )}
+        {listData && (
+          <div className={iframeData ? styles.detail_list : ''}>
+            <SearchList
+              result={listData}
+              handleDetail={onDetailClick}
+              display={iframeData ? `grid` : `list`}
+            />
+          </div>
+        )}
+      </section>
     </div>
   );
 };
