@@ -5,21 +5,13 @@ import SearchList from './components/SearchList';
 import VideoPage from './components/VideoPage';
 import styles from './youtube.module.css';
 
-const requestOptions = {
-  method: 'GET',
-  redirect: 'follow',
-};
-
-const App = () => {
+const App = ({ youtube }) => {
   const [listData, setListData] = useState();
   const [iframeData, setIframeData] = useState();
 
   useEffect(() => {
-    fetch(
-      'https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyCf_F1G4pIAXG2Al_-uOTFXfMhbS3iD9Sw',
-      requestOptions
-    )
-      .then((response) => response.json())
+    youtube
+      .mostPopular()
       .then((result) => {
         setListData(result.items);
       })
@@ -28,11 +20,8 @@ const App = () => {
 
   //조회
   const onSearch = useCallback((inputText) => {
-    fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${inputText}&key=AIzaSyCf_F1G4pIAXG2Al_-uOTFXfMhbS3iD9Sw`,
-      requestOptions
-    )
-      .then((response) => response.json())
+    youtube
+      .search(inputText)
       .then((result) => {
         result.items.map((value) => {
           return (value.id = value.id.videoId);
@@ -50,11 +39,8 @@ const App = () => {
 
   //home화면으로 이동
   const onHome = useCallback(() => {
-    fetch(
-      'https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyCf_F1G4pIAXG2Al_-uOTFXfMhbS3iD9Sw',
-      requestOptions
-    )
-      .then((response) => response.json())
+    youtube
+      .home()
       .then((result) => {
         setListData(result.items);
         setIframeData();
